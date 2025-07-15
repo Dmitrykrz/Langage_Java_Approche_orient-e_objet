@@ -19,5 +19,11 @@ public class TestAdressePostale {
 
 
 
+        //avec constructeur
+        AdressePostale address3 = new AdressePostale(12, "Rue de qwety", 34000, "Montpellier");
+
+
+
+
     }
 }

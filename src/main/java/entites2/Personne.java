@@ -7,4 +7,18 @@ public class Personne {
     public String prenom;
     public AdressePostale address;
 
+    public Personne(){
+    }
+
+    public Personne(String nom, String prenom){
+        this.nom= nom;
+        this.prenom=prenom;
+    }
+
+    public Personne(String nom, String prenom, AdressePostale adressePostale){
+        this.nom= nom;
+        this.prenom=prenom;
+        this.address=adressePostale;
+    }
+
 }

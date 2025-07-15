@@ -22,6 +22,11 @@ public class TestPersonne {
         mike.address.ville="Montpellier";
         mike.address.codePostal=34000;
 
+        Personne steeve = new Personne("Gray", "Steeve");
+        Personne john = new Personne("Blue", "John", new AdressePostale(12, "rue de qwerty2",34000,"Montpellier"));
+
+
+
 
     }
 }
