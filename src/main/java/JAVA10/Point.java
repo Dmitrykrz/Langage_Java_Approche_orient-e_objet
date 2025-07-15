@@ -14,6 +14,6 @@ public class Point {
 
 
     public String toString() {
-        return "[" + x + ";" + y + "]";
+        return "[" + this.x + ";" + this.y + "]";
     }
 }
