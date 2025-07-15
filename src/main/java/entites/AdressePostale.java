@@ -19,4 +19,7 @@ public class AdressePostale {
 
 
     }
+    public String print_address() {
+        return numeroRue + " " + libelleRue + ", " + codePostal + " " + ville;
+    }
 }
