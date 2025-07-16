@@ -1,7 +1,6 @@
 package JAVA12;
 
 
-
 public class Carre extends Rectangle {
 
     public Carre(Point basGauche, int size) {

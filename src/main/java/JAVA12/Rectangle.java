@@ -1,7 +1,6 @@
 package JAVA12;
 
 
-
 public class Rectangle {
     private Point basGauche;
     private int largeur;
@@ -31,12 +30,13 @@ public class Rectangle {
 
 
     public String toString() {
-        return getType() +
-                getPointBasGauche().toString() +
-                getPointBasDroit().toString() +
-                getPointHautGauche().toString() +
-                getPointHautDroit().toString() +
-                "]";
+        return
+                getType() + "[" +
+                        getPointBasGauche().toString() +
+                        getPointBasDroit().toString() +
+                        getPointHautGauche().toString() +
+                        getPointHautDroit().toString() +
+                        "]";
     }
 
     public void affiche() {
