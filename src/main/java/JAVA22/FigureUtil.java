@@ -17,7 +17,7 @@ public class FigureUtil {
         return allPoints;
     }
     public static Figure getFigureEn(Point p, Dessin d) {
-        // need to expose figures
+
         for (Figure f : d.getFigures()) {
             if (f.couvre(p)) {
                 return f;
