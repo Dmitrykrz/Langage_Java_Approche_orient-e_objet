@@ -18,10 +18,13 @@ public abstract class Figure implements Comparable<Figure> {
     @Override
     public abstract String toString();
 
+
+
+
+
     public double distanceOrigine() {
         Point origin = new Point(Point.INIT_X, Point.INIT_Y);
         double minDistance = -1;
-
         for (Point p : getPoints()) {
             double dist = p.distance(origin);
             if (dist < minDistance || minDistance == -1) {
@@ -30,6 +33,9 @@ public abstract class Figure implements Comparable<Figure> {
         }
         return minDistance;
     }
+
+
+
 
     //public boolean compareTo(Figure f) {
     //  return (this.distanceOrigine() < f.distanceOrigine());
