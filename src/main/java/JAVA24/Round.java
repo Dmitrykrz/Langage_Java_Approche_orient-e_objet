@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Round extends Figure implements Surfacable {
     private Point centre;
-    private int radius;
+    int radius;
 
     public boolean couvre(Point p) {
 
