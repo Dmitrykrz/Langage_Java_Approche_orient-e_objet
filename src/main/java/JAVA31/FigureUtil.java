@@ -1,11 +1,7 @@
 package JAVA31;
 
+import java.io.*;
 import java.util.*;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.stream.Collectors;
 
 public class FigureUtil {
@@ -157,6 +153,13 @@ public class FigureUtil {
  return d_reconstructed;
     }
 
+
+
+
+
+
+
+
     public static void sauvegarde(Dessin dessin, String nomFichier) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(nomFichier))) {
             writer.print(dessin.toString());
@@ -165,6 +168,11 @@ public class FigureUtil {
 
         }
     }
+
+
+
+
+
     private static Couleur getRandomCouleur(Random rand) throws DessinHorsLimiteException {
         Couleur[] c = Couleur.values();
         return c[rand.nextInt(c.length)];
