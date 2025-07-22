@@ -1,8 +1,9 @@
 package ExerciceNote;
+
 import ExerciceNote.Vehicules.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class Port {
     private int maxVoiture;
@@ -23,15 +24,13 @@ public class Port {
     private Collection<Maritime> maritimesAmarer;
 
 
-
     public Port() throws Exception {
-              this(MAX_VOITURE_DEFAULT,MAX_MOT0_DEFAULT,MAX_MARITIME_DEFAULT,MAX_RESERVOIR_DEFAULT);
-
+        this(MAX_VOITURE_DEFAULT, MAX_MOT0_DEFAULT, MAX_MARITIME_DEFAULT, MAX_RESERVOIR_DEFAULT);
     }
 
 
     public Port(int max_voiture, int max_moto, int max_bateaux, double reservoir_max) throws Exception {
-        if (max_voiture<0 || max_moto<0 || max_bateaux<0 || reservoir_max<=0)
+        if (max_voiture < 0 || max_moto < 0 || max_bateaux < 0 || reservoir_max <= 0)
             throw new Exception("Nombre de places ou taille de réservoir incorrects pour créer un port");
         else {
 
@@ -47,9 +46,6 @@ public class Port {
     }
 
 
-
-
-
     public void garer(Routier vehicule) throws Exception {
         if (vehicule instanceof Voiture) {
             if (voituresGarer.size() >= maxVoiture) {
@@ -62,7 +58,7 @@ public class Port {
             }
             motosGarer.add((Moto) vehicule);
         } else {
-            throw new Exception("Cannot park this type of road vehicle.");
+            throw new Exception("Impossible de stationner ce type de véhicule");
         }
     }
 
@@ -88,30 +84,31 @@ public class Port {
         }
     }
 
- public void remplirReservoir(){
-     this.carburantRestant=this.essenceReservoir;
+    public void remplirReservoir() {
+        this.carburantRestant = this.essenceReservoir;
 
- }
+    }
 
 
-    public double getReservoir(){
+    public double getReservoir() {
         return this.carburantRestant;
     }
 
-    public double getReservoirMax(){
+    public double getReservoirMax() {
         return this.essenceReservoir;
     }
 
-    public void getFuelFromPort(double fuel){
-        this.carburantRestant=this.carburantRestant-fuel;
-
+    public void obtenirCarburant(double fuel) {
+        if (this.carburantRestant < fuel)
+            throw new IllegalArgumentException("Il n'y a pas assez de carburant dans le port");
+        else
+            this.carburantRestant = this.carburantRestant - fuel;
     }
 
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
 
 
         sb.append("\n\n---------------------------------------------------------------\n");
@@ -128,13 +125,8 @@ public class Port {
         sb.append("---------------------------------------------------------------\n");
         sb.append("----------------- Carburant au port ").append(getReservoir()).append(" l--------------------\n");
         sb.append("---------------------------------------------------------------\n");
-        sb.append("-------------- le réservoir est plein à ").append(getReservoir() / getReservoirMax()*100).append(" % ----------------\n");
+        sb.append("-------------- le réservoir est plein à ").append(getReservoir() / getReservoirMax() * 100).append(" % ----------------\n");
         sb.append("---------------------------------------------------------------\n");
-
-
-
-
-
         return sb.toString();
     }
 }

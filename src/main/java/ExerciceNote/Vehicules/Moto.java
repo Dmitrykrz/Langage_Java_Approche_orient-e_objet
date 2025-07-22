@@ -26,7 +26,8 @@ public class Moto extends Routier implements AMoteur {
         if (port.getReservoir()<fuelNeededByVehicle)
             throw new IllegalArgumentException("Il n'y a pas assez de carburant dans le port");
         else {
-            port.getFuelFromPort(fuelNeededByVehicle);
+            port.obtenirCarburant(fuelNeededByVehicle);
+            this.carburantRestant=this.essenceReservoir;
         }
     }
 
