@@ -39,11 +39,11 @@ public abstract class Enemy {
 
     protected String getRandomLastname(String filename) {
         List<String> lastnames = new ArrayList<>();
-        // Try to load the file as a resource from the classpath, relative to the package
-        try (InputStream is = getClass().getResourceAsStream(filename)) { // Removed the leading "/"
+
+        try (InputStream is = getClass().getResourceAsStream(filename)) {
             if (is == null) {
-                System.err.println("Resource not found: " + filename + ". Make sure it's in the same package as Enemy.java or in the classpath root.");
-                return "Unknown"; // Fallback if resource is not found
+                System.err.println("Resource not found: " + filename);
+                return "Unknown";
             }
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
                 String line;
@@ -54,14 +54,14 @@ public abstract class Enemy {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error reading lastname resource " + filename + ": " + e.getMessage());
-            // Fallback in case of file read error
+            System.err.println("Error reading lastname " + filename + ": " + e.getMessage());
+
             return "Unknown";
         }
 
         if (lastnames.isEmpty()) {
             System.err.println("No lastnames found in resource: " + filename);
-            return "Nameless"; // Another fallback if resource is empty
+            return "Unknown";
         }
 
         return lastnames.get(random.nextInt(lastnames.size()));

@@ -15,9 +15,9 @@ public class Fight {
         Random random = new Random();
         Enemy enemy = GenerateRandomEnemy.generate();
         String enemyName=enemy.getlastname()+ " the " +enemy.getName();
-        System.out.println("\n  " + enemyName+ " attack you!\n");
+        System.out.println("\n  " + enemyName+ " attacks you!\n");
         System.out.println(enemy.getArt());
-
+        Thread.sleep(1000);
         while (hero.getHealth() > 0 && enemy.getHealth() > 0) {
             Thread.sleep(500);
             System.out.print("Your hp " + hero.getHealth() + "       " + enemy.getName() + " hp " + enemy.getHealth() + "     ");
@@ -73,6 +73,7 @@ public class Fight {
                 }
 
             } else System.out.println(enemy.getName() + " did not have anything");
+            Thread.sleep(1000);
         }
         if (hero.getHealth() <= 0) {
 
