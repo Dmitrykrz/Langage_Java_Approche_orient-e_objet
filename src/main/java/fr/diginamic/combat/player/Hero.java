@@ -1,15 +1,14 @@
 package fr.diginamic.combat.player;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Hero {
     private int health;
     private int strength;
     private int score;
     public List<Potion> PotionsInInventory;
+    private Map<String, Integer> buffs = new HashMap<>();
 
     Random random = new Random();
     public Hero()
@@ -68,14 +67,32 @@ public class Hero {
 
         return sb.toString();
     }
+    public void addBuff(String name, int duration) {
+        buffs.put(name, duration);
+    }
 
     public void drinkPotion(Class<? extends Potion> potionClass) {
         for (Potion potion : PotionsInInventory) {
             if (potionClass.isInstance(potion)) {
                 try {
                     String buff= potion.drink();
-                    System.out.println("buff=" + buff);
-                    //add health and buff!!
+
+                    switch (buff) {
+                        case "HEAL" -> {
+                            this.health += 10;
+                            System.out.println("Current HP is " + this.health);
+
+                        }
+                        case "BIGATTACK" -> {
+                            addBuff("STRENGTH2", 2);
+                            System.out.println("Big attack buff applied (2 turns)");
+                        }
+                        case "SMALL_ATTACK" -> {
+                            addBuff("STRENGTH", 1);
+                            System.out.println("Small attack buff applied (1 turn)");
+                        }
+                        default -> System.out.println("No buff applied.");
+                    }
 
 
                 } catch (Exception e) {
@@ -88,5 +105,35 @@ public class Hero {
 
 
     }
+
+    public void updateBuffsAfterCombat() {
+        Map<String, Integer> updatedBuffs = new HashMap<>();
+
+        for (Map.Entry<String, Integer> entry : buffs.entrySet()) {
+            int duration = entry.getValue();
+            if (duration > 1) {
+                updatedBuffs.put(entry.getKey(), duration - 1);
+            }
+
+        }
+
+        buffs = updatedBuffs;
+    }
+
+    public void printBuffs() {
+        if (!buffs.isEmpty()) {
+            System.out.println("Active buffs:");
+            for (Map.Entry<String, Integer> entry : buffs.entrySet()) {
+                System.out.println("- " + entry.getKey() + ": " + entry.getValue() + " turn(s) remaining");
+            }
+        }
+
+
+    }
+
+    public boolean hasBuff(String name) {
+        return buffs.containsKey(name);
+    }
+
 
 }

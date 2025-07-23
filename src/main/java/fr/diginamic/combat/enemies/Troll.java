@@ -5,6 +5,7 @@ public class Troll extends Enemy {
         this.health=random.nextInt(11) +20;
         this.strength=random.nextInt(6) +10;
         this.name="Troll";
+        this.lastname=getRandomLastname("trollnames.txt");
         this.art= "  (ò_ó)  \n"
                 + "  /|_|\\  \n"
                 + "   / \\   \n";

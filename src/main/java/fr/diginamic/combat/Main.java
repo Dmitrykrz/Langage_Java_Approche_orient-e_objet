@@ -7,6 +7,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Hero player = null;
         while (true) {
+            if (player != null) {
+
+                System.out.print("\nHP "+player.getHealth()+"  ");
+            }
             int menu = Menu.show();
 
             if (menu == 1) {

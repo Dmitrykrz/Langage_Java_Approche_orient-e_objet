@@ -12,7 +12,7 @@ public class Menu {
         int choice = -1;
 
         while (choice == -1) {
-            System.out.println("\n--- Menu ---");
+            System.out.println("--- Menu ---");
             System.out.println("1 Create Hero");
             System.out.println("2 Fight");
             System.out.println("3 Drink Potion");
